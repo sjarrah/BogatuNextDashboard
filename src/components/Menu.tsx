@@ -1,6 +1,7 @@
 import { role } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
+import { title } from "process";
 
 const menuItems = [
   {
@@ -8,86 +9,68 @@ const menuItems = [
     items: [
       {
         icon: "/home.png",
-        label: "Home",
+        label: "Hem",
         href: "/",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/teacher.png",
-        label: "Teachers",
-        href: "/list/teachers",
-        visible: ["admin", "teacher"],
-      },
-      {
-        icon: "/student.png",
-        label: "Students",
-        href: "/list/students",
-        visible: ["admin", "teacher"],
-      },
-      {
         icon: "/parent.png",
-        label: "Parents",
-        href: "/list/parents",
+        label: "Personal",
+        href: "/list/personal",
         visible: ["admin", "teacher"],
       },
       {
         icon: "/subject.png",
-        label: "Subjects",
+        label: "Roller",
         href: "/list/subjects",
         visible: ["admin"],
       },
       {
-        icon: "/class.png",
-        label: "Classes",
-        href: "/list/classes",
-        visible: ["admin", "teacher"],
-      },
-      {
         icon: "/lesson.png",
-        label: "Lessons",
+        label: "Uppgifter",
         href: "/list/lessons",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/exam.png",
-        label: "Exams",
-        href: "/list/exams",
-        visible: ["admin", "teacher", "student", "parent"],
-      },
-      {
-        icon: "/assignment.png",
-        label: "Assignments",
-        href: "/list/assignments",
-        visible: ["admin", "teacher", "student", "parent"],
-      },
-      {
-        icon: "/result.png",
-        label: "Results",
-        href: "/list/results",
-        visible: ["admin", "teacher", "student", "parent"],
-      },
-      {
-        icon: "/attendance.png",
-        label: "Attendance",
-        href: "/list/attendance",
-        visible: ["admin", "teacher", "student", "parent"],
-      },
-      {
         icon: "/calendar.png",
-        label: "Events",
+        label: "Händelser",
         href: "/list/events",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
         icon: "/message.png",
-        label: "Messages",
+        label: "PM",
         href: "/list/messages",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
         icon: "/announcement.png",
-        label: "Announcements",
+        label: "Meddelanden",
         href: "/list/announcements",
+        visible: ["admin", "teacher", "student", "parent"],
+      },
+    ],
+  },
+
+  {
+    title: "VERKSTAD",
+    items: [ 
+      {
+        icon: "/student.png",
+        label: "Maskiner",
+        href: "/list/maskiner",
+        visible: ["admin", "teacher"],
+      },
+      {
+        icon: "/subject.png",
+        label: "Hantera Bes.protokoll",
+        href: "/list/besiktningsprotokoll",
+        visible: ["admin"],
+      },
+      {
+        icon: "/result.png",
+        label: "Resultat",
+        href: "/list/results",
         visible: ["admin", "teacher", "student", "parent"],
       },
     ],
@@ -97,7 +80,7 @@ const menuItems = [
     items: [
       {
         icon: "/profile.png",
-        label: "Profile",
+        label: "Profil",
         href: "/profile",
         visible: ["admin", "teacher", "student", "parent"],
       },
@@ -115,7 +98,7 @@ const menuItems = [
       },
     ],
   },
-];
+];  
 
 const Menu = () => {
   return (

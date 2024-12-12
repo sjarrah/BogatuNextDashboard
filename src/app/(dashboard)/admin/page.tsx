@@ -12,10 +12,10 @@ const AdminPage = () => {
       <div className="w-full lg:w-2/3 flex flex-col gap-8">
         {/* USER CARDS */}
         <div className="flex gap-4 justify-between flex-wrap">
-          <UserCard type="student" />
-          <UserCard type="teacher" />
-          <UserCard type="parent" />
-          <UserCard type="staff" />
+          <UserCard type="maskiner" />
+          <UserCard type="ruta2" />
+          <UserCard type="ruta3" />
+          <UserCard type="ruta4" />
         </div>
         {/* MIDDLE CHARTS */}
         <div className="flex gap-4 flex-col lg:flex-row">
@@ -25,12 +25,12 @@ const AdminPage = () => {
           </div>
           {/* ATTENDANCE CHART */}
           <div className="w-full lg:w-2/3 h-[450px]">
-            <AttendanceChart />
+           {/*  <AttendanceChart /> */}
           </div>
         </div>
         {/* BOTTOM CHART */}
         <div className="w-full h-[500px]">
-          <FinanceChart />
+         {/*  <FinanceChart /> */}
         </div>
       </div>
       {/* RIGHT */}

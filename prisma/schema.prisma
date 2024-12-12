@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  email     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Employee {
+  id        String      @id 
+  name      String  @unique
+  surname   String
+  email     String?
+  img       String?
+  phone     String
+  address   String
+  medical   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Maskin {
+  id        Int      @id @default(autoincrement())
+  name      String  
+  img       String?
+  regNo     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  startService DateTime? 
+  endService DateTime?
+  maskintypId Int @default(0)
+  maskinTyp MaskinTyp @relation(fields: [maskintypId], references: [id])
+  besiktningsResultat BesiktningsResultat[]
+}
+
+model BesiktningsPunkt {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  description String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  MaskinTypId Int 
+  maskinTyper MaskinTyp @relation(fields: [MaskinTypId], references: [id])
+  besResultat BesiktningsResultat[]
+}
+model BesiktningsResultat {
+  id        Int      @id @default(autoincrement())
+
+  resultat      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  maskinId Int
+  maskiner Maskin @relation(fields: [maskinId], references: [id])
+  BesiktningsPunktId Int
+  besiktningsPunkter BesiktningsPunkt @relation(fields: [BesiktningsPunktId], references: [id])
+}
+model MaskinTyp {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  description String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  maskiner Maskin[]
+  besiktningsPunkter BesiktningsPunkt[]
+
+}
+
+
+
